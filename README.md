@@ -2,6 +2,8 @@
 
 A Neovim plugin that extends [dial.nvim](https://github.com/monaqa/dial.nvim) to toggle TailwindCSS classes.
 
+<img src="assets/screenshot.gif" />
+
 ## Features
 
 - Toggle between TailwindCSS color shades (e.g., `blue-100` -> `blue-200`).

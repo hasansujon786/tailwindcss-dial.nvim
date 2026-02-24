@@ -1,13 +1,20 @@
 local M = {}
 
+local accessibility = require("tailwindcss-dial.accessibility")
 local backgrounds = require("tailwindcss-dial.backgrounds")
 local borders = require("tailwindcss-dial.borders")
 local colors = require("tailwindcss-dial.colors")
 local effects = require("tailwindcss-dial.effects")
+local filters = require("tailwindcss-dial.filters")
 local flexbox_grid = require("tailwindcss-dial.flexbox-grid")
+local interactivity = require("tailwindcss-dial.interactivity")
 local layout = require("tailwindcss-dial.layout")
 local sizing = require("tailwindcss-dial.sizing")
 local spacing = require("tailwindcss-dial.spacing")
+local svg = require("tailwindcss-dial.svg")
+local tables = require("tailwindcss-dial.tables")
+local transforms = require("tailwindcss-dial.transforms")
+local transitions_animation = require("tailwindcss-dial.transitions_animation")
 local typography = require("tailwindcss-dial.typography")
 
 --- @return table[]
@@ -16,104 +23,162 @@ function M.augends()
 
   local result = {}
 
-  -- Colors
-  for _, color in ipairs(colors.names) do
-    local color_group = {}
-    for _, shade in ipairs(colors.shades) do
-      table.insert(color_group, color .. "-" .. shade)
-    end
-    table.insert(
-      result,
-      augend.constant.new({
-        elements = color_group,
-        word = false,
-        cyclic = true,
-      })
-    )
-  end
-
-  -- Border Radius
-  local border_radius_prefixes = {
-    "",
-    "t-",
-    "b-",
-    "l-",
-    "r-",
-    "tl-",
-    "tr-",
-    "bl-",
-    "br-",
-  }
-
-  for _, prefix in ipairs(border_radius_prefixes) do
-    local group = {}
-    for _, value in ipairs(borders.border_radius_values) do
-      table.insert(group, "rounded-" .. prefix .. value)
-    end
-    table.insert(
-      result,
-      augend.constant.new({
-        elements = group,
-        word = true,
-        cyclic = true,
-      })
-    )
-  end
-
-  -- Blend Modes
-  local blend_prefixes = { "mix-blend-", "bg-blend-" }
-  for _, prefix in ipairs(blend_prefixes) do
-    local group = {}
-    for _, mode in ipairs(effects.blend_modes) do
-      table.insert(group, prefix .. mode)
-    end
-    table.insert(
-      result,
-      augend.constant.new({
-        elements = group,
-        word = true,
-        cyclic = true,
-      })
-    )
-  end
-
   -- Full word rules
   local word_rules = {
-    backgrounds.bg_linear,
+    accessibility.forced_color_adjust,
+
+    backgrounds.bg_attachment,
+    backgrounds.bg_clip,
+    backgrounds.bg_image,
+    backgrounds.bg_origin,
     backgrounds.bg_position,
     backgrounds.bg_repeat,
     backgrounds.bg_size,
 
+    borders.border_radius,
+    borders.border_radius_t,
+    borders.border_radius_b,
+    borders.border_radius_l,
+    borders.border_radius_r,
+    borders.border_radius_tl,
+    borders.border_radius_tr,
+    borders.border_radius_bl,
+    borders.border_radius_br,
+    borders.border_style,
+    borders.divide_style,
+    borders.outline_style,
+
     effects.box_shadow,
+    effects.text_shadow,
+    effects.mix_blend_mode,
+    effects.bg_blend_mode,
+    effects.mask_clip,
+    effects.mask_composite,
+    effects.mask_mode,
+    effects.mask_origin,
+    effects.mask_position,
+    effects.mask_repeat,
+    effects.mask_size,
+    effects.mask_type,
 
+    filters.blur,
+    filters.drop_shadow,
+    filters.backdrop_blur,
+
+    flexbox_grid.align_content,
     flexbox_grid.align_items,
+    flexbox_grid.align_self,
+    flexbox_grid.flex_basis,
     flexbox_grid.flex_direction,
+    flexbox_grid.flex_wrap,
+    flexbox_grid.grid_auto_columns,
+    flexbox_grid.grid_auto_flow,
+    flexbox_grid.grid_auto_rows,
     flexbox_grid.justify_content,
+    flexbox_grid.justify_items,
+    flexbox_grid.justify_self,
+    flexbox_grid.place_content,
+    flexbox_grid.place_items,
+    flexbox_grid.place_self,
 
+    interactivity.appearance,
+    interactivity.color_scheme,
+    interactivity.cursor,
+    interactivity.field_sizing,
+    interactivity.pointer_events,
+    interactivity.resize,
+    interactivity.scroll_behavior,
+    interactivity.scroll_snap_align,
+    interactivity.scroll_snap_stop,
+    interactivity.scroll_snap_type,
+    interactivity.touch_action,
+    interactivity.user_select,
+    interactivity.will_change,
+
+    layout.aspect_ratio,
+    layout.box_decoration_break,
+    layout.box_sizing,
+    layout.break_after,
+    layout.break_before,
+    layout.break_inside,
+    layout.clear,
+    layout.columns,
     layout.display,
+    layout.float,
+    layout.isolation,
+    layout.object_fit,
+    layout.object_position,
+    layout.overflow,
+    layout.overscroll_behavior,
     layout.position,
+    layout.visibility,
 
-    sizing.block,
+    sizing.block_size,
+    sizing.max_block_size,
+    sizing.min_block_size,
     sizing.height,
-    sizing.inline,
-    sizing.max_block,
     sizing.max_height,
-    sizing.max_inline,
-    sizing.max_width,
-    sizing.min_block,
     sizing.min_height,
-    sizing.min_inline,
-    sizing.min_width,
+    sizing.inline_size,
+    sizing.min_inline_size,
+    sizing.max_inline_size,
     sizing.width,
+    sizing.min_width,
+    sizing.max_width,
 
+    tables.border_collapse,
+    tables.table_layout,
+    tables.caption_side,
+
+    transforms.backface_visibility,
+    transforms.perspective,
+    transforms.perspective_origin,
+    transforms.transform,
+    transforms.transform_origin,
+    transforms.transform_style,
+
+    transitions_animation.transition_property,
+    transitions_animation.transition_behavior,
+    transitions_animation.transition_timing_function,
+    transitions_animation.animation,
+
+    typography.font_family,
     typography.font_size,
+    typography.font_smoothing,
     typography.font_stretch,
+    typography.font_style,
+    typography.font_variant_numeric,
     typography.font_weight,
+    typography.hyphens,
+    typography.letter_spacing,
     typography.line_height,
+    typography.list_style_position,
+    typography.list_style_type,
+    typography.overflow_wrap,
     typography.text_align,
+    typography.text_decoration_line,
+    typography.text_decoration_style,
+    typography.text_overflow,
+    typography.text_transform,
     typography.text_wrap,
-    typography.tracking,
+    typography.vertical_align,
+    typography.white_space,
+    typography.word_break,
   }
+
+  for _, color_name in pairs(colors.names) do
+    table.insert(word_rules, backgrounds["bg_color_" .. color_name])
+    table.insert(word_rules, borders["border_color_" .. color_name])
+    table.insert(word_rules, borders["outline_color_" .. color_name])
+    table.insert(word_rules, effects["box_shadow_color_" .. color_name])
+    table.insert(word_rules, effects["text_shadow_color_" .. color_name])
+    table.insert(word_rules, interactivity["accent_color_" .. color_name])
+    table.insert(word_rules, interactivity["caret_color_" .. color_name])
+    table.insert(word_rules, svg["fill_color_" .. color_name])
+    table.insert(word_rules, svg["stroke_color_" .. color_name])
+    table.insert(word_rules, typography["color_" .. color_name])
+    table.insert(word_rules, typography["decoration_" .. color_name])
+  end
 
   for _, group in ipairs(word_rules) do
     table.insert(
@@ -128,8 +193,27 @@ function M.augends()
 
   -- Partial word rules (e.g., margin, padding)
   local non_word_rules = {
+    borders.border_width,
+
+    flexbox_grid.col_span,
+    flexbox_grid.gap,
+    flexbox_grid.row_span,
+
+    interactivity.scroll_margin,
+    interactivity.scroll_padding,
+
+    layout.inset,
+    layout.sides,
+
     spacing.margin,
     spacing.padding,
+
+    tables.border_spacing,
+
+    transforms.rotate,
+    transforms.scale,
+    transforms.skew,
+    transforms.translate,
   }
 
   for _, group in ipairs(non_word_rules) do

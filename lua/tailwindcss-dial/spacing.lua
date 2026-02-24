@@ -1,6 +1,8 @@
 local M = {}
 
+-- https://tailwindcss.com/docs/padding
 M.padding = { "p-" }
+-- https://tailwindcss.com/docs/margin
 M.margin = { "m-" }
 
 local directions = { "x", "y", "t", "r", "b", "l", "s", "e", "bs", "be" }

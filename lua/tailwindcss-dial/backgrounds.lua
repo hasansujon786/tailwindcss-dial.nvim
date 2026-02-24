@@ -1,6 +1,25 @@
+local colors = require("tailwindcss-dial.colors")
+
 local M = {}
 
-M.bg_linear = {
+-- https://tailwindcss.com/docs/background-attachment
+M.bg_attachment = { "bg-fixed", "bg-local", "bg-scroll" }
+
+-- https://tailwindcss.com/docs/background-clip
+M.bg_clip = { "bg-clip-border", "bg-clip-padding", "bg-clip-content", "bg-clip-text" }
+
+-- https://tailwindcss.com/docs/background-color
+for _, color_name in pairs(colors.names) do
+  local group = {}
+  for _, shade in pairs(colors.shades) do
+    table.insert(group, "bg-" .. color_name .. "-" .. shade)
+  end
+
+  M["bg_color_" .. color_name] = group
+end
+
+-- https://tailwindcss.com/docs/background-image
+M.bg_image = {
   "bg-linear-to-t",
   "bg-linear-to-tr",
   "bg-linear-to-r",
@@ -11,6 +30,10 @@ M.bg_linear = {
   "bg-linear-to-tl",
 }
 
+-- https://tailwindcss.com/docs/background-origin
+M.bg_origin = { "bg-origin-border", "bg-origin-padding", "bg-origin-content" }
+
+-- https://tailwindcss.com/docs/background-position
 M.bg_position = {
   "bg-top-left",
   "bg-top",
@@ -23,6 +46,7 @@ M.bg_position = {
   "bg-bottom-right",
 }
 
+-- https://tailwindcss.com/docs/background-repeat
 M.bg_repeat = {
   "bg-repeat",
   "bg-repeat-x",
@@ -32,10 +56,18 @@ M.bg_repeat = {
   "bg-no-repeat",
 }
 
+-- https://tailwindcss.com/docs/background-size
 M.bg_size = {
   "bg-auto",
   "bg-cover",
   "bg-contain",
 }
 
+-- https://tailwindcss.com/docs/background-color
+M.bg_color = {}
+for _, color in ipairs(require("tailwindcss-dial.colors").names) do
+  for _, shade in ipairs(require("tailwindcss-dial.colors").shades) do
+    table.insert(M.bg_color, "bg-" .. color .. "-" .. shade)
+  end
+end
 return M

@@ -69,8 +69,8 @@ function M.augends()
     )
   end
 
-  -- Simple rules
-  local simple_rules = {
+  -- Word rules
+  local word_rules = {
     groups.align_items,
     groups.bg_linear,
     groups.bg_position,
@@ -90,12 +90,28 @@ function M.augends()
     groups.tracking,
   }
 
-  for _, group in ipairs(simple_rules) do
+  for _, group in ipairs(word_rules) do
     table.insert(
       result,
       augend.constant.new({
         elements = group,
         word = true,
+        cyclic = true,
+      })
+    )
+  end
+
+  local non_word_rules = {
+    groups.margin,
+    groups.padding,
+  }
+
+  for _, group in ipairs(non_word_rules) do
+    table.insert(
+      result,
+      augend.constant.new({
+        elements = group,
+        word = false,
         cyclic = true,
       })
     )

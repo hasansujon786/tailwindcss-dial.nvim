@@ -251,7 +251,7 @@ local function normalize_filetypes(opts)
     return {}
   end
 
-  local filetypes = opts.filetype or opts.filetypes
+  local filetypes = opts.filetype or opts.ft
   if not filetypes then
     return {}
   end
@@ -273,7 +273,7 @@ local function normalize_filetypes(opts)
   return {}
 end
 
---- @param opts? { group: string, filetype?: string|string[], filetypes?: string[] }
+--- @param opts? { group: string, filetype?: string|string[], ft?: string[] }
 function M.setup(opts)
   local group_name = (opts and opts.group) or "default"
 

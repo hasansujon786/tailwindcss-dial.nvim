@@ -38,7 +38,7 @@ This is the recommended method. It will automatically detect your existing `dial
   dependencies = { "monaqa/dial.nvim" },
   opts = {
     -- group = "default", -- optional, defaults to "default"
-    -- ft = { "typescript", "tsx" }, -- optional
+    -- ft = { "typescriptreact", "astro" }, -- optional
   },
 }
 ```
@@ -46,6 +46,7 @@ This is the recommended method. It will automatically detect your existing `dial
 By using `dependencies`, `lazy.nvim` ensures that `dial.nvim` is loaded and your custom `dial` groups are already registered before `tailwindcss-dial.nvim` runs its setup. This allows it to safely merge with your existing configuration.
 
 Notes:
+
 - If you configure `filetype` or `ft`, the plugin will not modify the default group.
 - If you configure `group`, the plugin will not register filetype augends.
 

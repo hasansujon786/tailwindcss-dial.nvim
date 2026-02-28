@@ -15,9 +15,9 @@ M.box_shadow = {
 }
 
 -- https://tailwindcss.com/docs/box-shadow-color
-for _, color_name in pairs(colors.names) do
+for _, color_name in ipairs(colors.names) do
   local group = {}
-  for _, shade in pairs(colors.shades) do
+  for _, shade in ipairs(colors.shades) do
     table.insert(group, "box-shadow-" .. color_name .. "-" .. shade)
   end
 
@@ -35,9 +35,9 @@ M.text_shadow = {
 }
 
 -- https://tailwindcss.com/docs/text-shadow-color
-for _, color_name in pairs(colors.names) do
+for _, color_name in ipairs(colors.names) do
   local group = {}
-  for _, shade in pairs(colors.shades) do
+  for _, shade in ipairs(colors.shades) do
     table.insert(group, "text-shadow-" .. color_name .. "-" .. shade)
   end
 

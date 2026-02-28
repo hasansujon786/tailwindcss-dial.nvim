@@ -54,26 +54,14 @@ M.border_width = {
 }
 
 -- https://tailwindcss.com/docs/border-color
-for _, color_name in pairs(colors.names) do
+for _, color_name in ipairs(colors.names) do
   local group = {}
-  for _, shade in pairs(colors.shades) do
+  for _, shade in ipairs(colors.shades) do
     table.insert(group, "border-" .. color_name .. "-" .. shade)
   end
 
   M["border_color_" .. color_name] = group
 end
-
-M.justify_content = {
-  "justify-start",
-  "justify-end",
-  "justify-center",
-  "justify-between",
-  "justify-around",
-  "justify-evenly",
-  "justify-stretch",
-  "justify-baseline",
-  "justify-normal",
-}
 
 -- https://tailwindcss.com/docs/border-style
 M.border_style = {
@@ -96,9 +84,9 @@ M.divide_style = {
 }
 
 -- https://tailwindcss.com/docs/outline-color
-for _, color_name in pairs(colors.names) do
+for _, color_name in ipairs(colors.names) do
   local group = {}
-  for _, shade in pairs(colors.shades) do
+  for _, shade in ipairs(colors.shades) do
     table.insert(group, "outline-" .. color_name .. "-" .. shade)
   end
 

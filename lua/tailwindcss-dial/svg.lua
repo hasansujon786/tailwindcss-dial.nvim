@@ -3,9 +3,9 @@ local colors = require("tailwindcss-dial.colors")
 local M = {}
 
 -- https://tailwindcss.com/docs/fill
-for _, color_name in pairs(colors.names) do
+for _, color_name in ipairs(colors.names) do
   local group = {}
-  for _, shade in pairs(colors.shades) do
+  for _, shade in ipairs(colors.shades) do
     table.insert(group, "fill-" .. color_name .. "-" .. shade)
   end
 
@@ -13,9 +13,9 @@ for _, color_name in pairs(colors.names) do
 end
 
 -- https://tailwindcss.com/docs/stroke
-for _, color_name in pairs(colors.names) do
+for _, color_name in ipairs(colors.names) do
   local group = {}
-  for _, shade in pairs(colors.shades) do
+  for _, shade in ipairs(colors.shades) do
     table.insert(group, "stroke-" .. color_name .. "-" .. shade)
   end
 

@@ -167,7 +167,7 @@ function M.augends()
     typography.word_break,
   }
 
-  for _, color_name in pairs(colors.names) do
+  for _, color_name in ipairs(colors.names) do
     table.insert(word_rules, backgrounds["bg_color_" .. color_name])
     table.insert(word_rules, borders["border_color_" .. color_name])
     table.insert(word_rules, borders["outline_color_" .. color_name])

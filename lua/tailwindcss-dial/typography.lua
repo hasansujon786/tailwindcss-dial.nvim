@@ -3,9 +3,9 @@ local colors = require("tailwindcss-dial.colors")
 local M = {}
 
 -- https://tailwindcss.com/docs/color
-for _, color_name in pairs(colors.names) do
+for _, color_name in ipairs(colors.names) do
   local group = {}
-  for _, shade in pairs(colors.shades) do
+  for _, shade in ipairs(colors.shades) do
     table.insert(group, "text-" .. color_name .. "-" .. shade)
   end
 
@@ -114,9 +114,9 @@ M.list_style_type = {
 M.text_align = { "text-left", "text-center", "text-right", "text-justify", "text-start", "text-end" }
 
 -- https://tailwindcss.com/docs/text-decoration-color
-for _, color_name in pairs(colors.names) do
+for _, color_name in ipairs(colors.names) do
   local group = {}
-  for _, shade in pairs(colors.shades) do
+  for _, shade in ipairs(colors.shades) do
     table.insert(group, "decoration-" .. color_name .. "-" .. shade)
   end
 

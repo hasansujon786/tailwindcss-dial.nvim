@@ -9,9 +9,9 @@ M.bg_attachment = { "bg-fixed", "bg-local", "bg-scroll" }
 M.bg_clip = { "bg-clip-border", "bg-clip-padding", "bg-clip-content", "bg-clip-text" }
 
 -- https://tailwindcss.com/docs/background-color
-for _, color_name in pairs(colors.names) do
+for _, color_name in ipairs(colors.names) do
   local group = {}
-  for _, shade in pairs(colors.shades) do
+  for _, shade in ipairs(colors.shades) do
     table.insert(group, "bg-" .. color_name .. "-" .. shade)
   end
 
@@ -63,11 +63,4 @@ M.bg_size = {
   "bg-contain",
 }
 
--- https://tailwindcss.com/docs/background-color
-M.bg_color = {}
-for _, color in ipairs(require("tailwindcss-dial.colors").names) do
-  for _, shade in ipairs(require("tailwindcss-dial.colors").shades) do
-    table.insert(M.bg_color, "bg-" .. color .. "-" .. shade)
-  end
-end
 return M

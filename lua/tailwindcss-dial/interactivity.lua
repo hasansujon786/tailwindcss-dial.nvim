@@ -3,9 +3,9 @@ local colors = require("tailwindcss-dial.colors")
 local M = {}
 
 -- https://tailwindcss.com/docs/accent-color
-for _, color_name in pairs(colors.names) do
+for _, color_name in ipairs(colors.names) do
   local group = {}
-  for _, shade in pairs(colors.shades) do
+  for _, shade in ipairs(colors.shades) do
     table.insert(group, "accent-" .. color_name .. "-" .. shade)
   end
 
@@ -19,9 +19,9 @@ M.appearance = {
 }
 
 -- https://tailwindcss.com/docs/caret-color
-for _, color_name in pairs(colors.names) do
+for _, color_name in ipairs(colors.names) do
   local group = {}
-  for _, shade in pairs(colors.shades) do
+  for _, shade in ipairs(colors.shades) do
     table.insert(group, "caret-" .. color_name .. "-" .. shade)
   end
 

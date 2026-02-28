@@ -206,8 +206,8 @@ function M.augends()
     layout.inset,
     layout.sides,
 
-    spacing.margin,
-    spacing.padding,
+    -- spacing.margin,
+    -- spacing.padding,
 
     tables.border_spacing,
 
